@@ -9,8 +9,8 @@ namespace _1651ASMAPP
     internal class Payment
     {
         public int Id { get; set; }
-        public string UserName { get; set; }
-        public Payment(string name)
+        public User User { get; set; }
+        public Payment(User user)
         {
             if (Program.students.Count > 0)
             {
@@ -18,19 +18,19 @@ namespace _1651ASMAPP
                 Id = setID + 1;
             }
             else Id = 1;
-            UserName = name;
+            User = user;
         }
         public string ToString()
         {
             decimal total = 0;
             foreach (var order in Program.orderDetails)
             {
-                if (order.UserName == this.UserName)
+                if (order.User.Name == this.User.Name)
                 {
                     total += order.Quantity * order.Book.Price;
                 }
             }
-            return $"ID: {Id} User:{UserName} Amount: {total} ";
+            return $"ID: {Id} User:{User.Name} Amount: {total} ";
         }
 
     }

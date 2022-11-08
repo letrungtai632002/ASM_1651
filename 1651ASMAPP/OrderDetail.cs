@@ -9,10 +9,10 @@ namespace _1651ASMAPP
     internal class OrderDetail
     {
         public int Id { get; set; }
-        public string UserName { get; set; }
+        public User User { get; set; }
         public Book Book { get; set; }
         public int Quantity { get; set; }
-        public OrderDetail(string name, Book book, int quantity)
+        public OrderDetail(User user, Book book, int quantity)
         {
             if (Program.orderDetails.Count > 0)
             {
@@ -20,13 +20,13 @@ namespace _1651ASMAPP
                 Id = setID + 1;
             }
             else Id = 1;
-            UserName = name;
+            User = user;
             Book = book;
             Quantity = quantity;
         }
         public string ToString()
         {
-            return $"ID: {Id} User:{UserName} Book: {Book.Name} " +
+            return $"ID: {Id} User:{User.Name} Book: {Book.Name} " +
                 $"Quantity: {Quantity} Subtotal: {Quantity * Book.Price} ";
         }
     }

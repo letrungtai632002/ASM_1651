@@ -92,7 +92,7 @@ namespace _1651ASMAPP
                                             student.RemoveBook();
                                             break;
                                         case "7":
-                                            payments.Add(new Payment(student.Name));
+                                            payments.Add(new Payment(student));
                                             student.ViewPayment();
                                             break;
                                         case "8":
@@ -141,7 +141,7 @@ namespace _1651ASMAPP
                                             professor.RemoveBook();
                                             break;
                                         case "7":
-                                            payments.Add(new Payment(professor.Name));
+                                            payments.Add(new Payment(professor));
                                             professor.ViewPayment();
                                             break;
                                         case "8":

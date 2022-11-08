@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace _1651ASMAPP
 {
@@ -104,7 +106,8 @@ namespace _1651ASMAPP
                 if (Program.books[i].ID == id && Program.books[i].CheckValid() 
                     && quantity< Program.books[i].Quantity)
                 {
-                    Program.orderDetails.Add(new OrderDetail(this.Name, Program.books[i], quantity));
+                    Program.orderDetails.Add(new OrderDetail(new User(this.Name, this.Password,
+                        this.Address, this.PhoneNumber), Program.books[i], quantity));
                     Program.books[i].Quantity -= quantity;
                 }
             }
@@ -134,7 +137,7 @@ namespace _1651ASMAPP
             var check=false;
             foreach (var orderDetail in Program.orderDetails)
             {
-                if (orderDetail.UserName == this.Name)
+                if (orderDetail.User.Name == this.Name)
                 {
                     Console.WriteLine(orderDetail.ToString());
                     check=true;
@@ -147,7 +150,7 @@ namespace _1651ASMAPP
         {
             foreach (var payment in Program.payments)
             {
-                if (payment.UserName == this.Name)
+                if (payment.User.Name == this.Name)
                 {
                     Console.WriteLine(payment.ToString());
                 }
